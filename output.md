@@ -1,7 +1,7 @@
 # Exercise 4
   
-Zishi Zhang  
-23-741-390  
+**Zishi Zhang**  
+**23-741-390**  
   
 ## Task 1 LayerNorm in `JoeyNMT`   
 
