@@ -150,7 +150,7 @@ Zishi Zhang
 
 By specifying the `layer_norm` in your config file, you can control the model to use `pre` or `post` layer normalization. You can also chose to use pre-norm only in decoder or encoder by specifying different arguments.  
   
-> E.g:
+> E.g:  
 > Under `./joeynmt/configs/transformer_small.yaml` Line `146` and `161`
 > ```python
 > layer_norm: "pre"    # where to apply layer norm. either "pre" or "post". default "post"
