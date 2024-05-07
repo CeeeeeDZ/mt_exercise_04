@@ -128,7 +128,7 @@ Zishi Zhang
       
     If the layer_norm are not specified in config file, the postion will be `pre` by default when calling the `TransformerEncoderLayer` class and `post` when assigning `LayerNorm` method to `self.layer_norm` in the encoder by using `get("layer_norm", "post")`  
       
-    > This inconsistency might due to negligence by creator of this repository, and it should be like `layer_norm=kwargs.get("layer_norm", "post"),`
+    > There is an inconsistency between decoder layer and encoder layer, to maintain the consistency it should be like `layer_norm=kwargs.get("layer_norm", "post"),`
 
 - **Decoder**  
     Under `./joeynmt/decoder.py` Line `537`  
