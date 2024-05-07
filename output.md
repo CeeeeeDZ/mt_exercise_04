@@ -46,7 +46,7 @@ Zishi Zhang
         If the`layer_norm_postion` is `pre`, the layernorm will be execute before feed forward layer.
     
     - LayerNorm of the whole encoder  
-        Under `../joeynmt/encoder.py` Line `257-258`  
+        Under `./joeynmt/encoder.py` Line `257-258`  
         ```python
         if self.layer_norm is not None:
             x = self.layer_norm(x)
@@ -102,7 +102,7 @@ Zishi Zhang
         If the`layer_norm_postion` is `pre`, the layernorm will be execute before feed forward layer.
     
     - LayerNorm of the whole decoder  
-        Under `../joeynmt/decoder.py` Line `603-604`  
+        Under `./joeynmt/decoder.py` Line `603-604`  
         ```python
         if self.layer_norm is not None:
             x = self.layer_norm(x)
@@ -113,7 +113,7 @@ Zishi Zhang
 ### Default Settings  
 
 - **Encoder**  
-    Under `../joeynmt/encoder.py` Line `208`  
+    Under `./joeynmt/encoder.py` Line `208`  
     ```python
     layer_norm=kwargs.get("layer_norm", "pre"),
     ```  
@@ -131,7 +131,7 @@ Zishi Zhang
     > This inconsistency might due to negligence by creator of this repository, and it should be like `layer_norm=kwargs.get("layer_norm", "post"),`
 
 - **Decoder**  
-    Under `../joeynmt/decoder.py` Line `537`  
+    Under `./joeynmt/decoder.py` Line `537`  
     ```python
     layer_norm=kwargs.get("layer_norm", "post"),
     ```  
@@ -144,4 +144,14 @@ Zishi Zhang
         )
     ```  
       
-    If the layer_norm are not specified in config file, the postion will be `post` by default when calling the `TransformerDecoderLayer` class and assigning `LayerNorm` method to `self.layer_norm` in the decoder by using `get("layer_norm", "post")`
+    If the layer_norm are not specified in config file, the postion will be `post` by default when calling the `TransformerDecoderLayer` class and assigning `LayerNorm` method to `self.layer_norm` in the decoder by using `get("layer_norm", "post")`  
+  
+### **Usage**  
+
+By specifying the `layer_norm` in your config file, you can control the model to use `pre` or `post` layer normalization. You can also chose to use pre-norm only in decoder or encoder by specifying different arguments.  
+  
+> E.g:
+> Under `./joeynmt/configs/transformer_small.yaml` Line `146` and `161`
+> ```python
+> layer_norm: "pre"    # where to apply layer norm. either "pre" or "post". default "post"
+> ```
