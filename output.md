@@ -12,16 +12,16 @@ Zishi Zhang
 ### Implementations
 
 - **LayerNorm**
-    Under `./joeynmt/transformer_layers.py` Line `143`
-    ```python
-    self.layer_norm = nn.LayerNorm(input_size, eps=1e-6)
-    ```
+            Under `./joeynmt/transformer_layers.py` Line `143`
+        ```python
+        self.layer_norm = nn.LayerNorm(input_size, eps=1e-6)
+        ```
 
-    The layer normalization is implement by using method from torch called `LayerNorm`, eps is set to 1e-6 which will be add to the denominator for numerical stability. This is common throughout the whole program
+        The layer normalization is implement by using method from torch called `LayerNorm`, eps is set to 1e-6 which will be add to the denominator for numerical stability. This is common throughout the whole program
 
 - **LayerNorm in Encoder**
     - Multi-Head Attention
-        Under `./joeynmt/transformer_layers.py` Line `276-283`
+            Under `./joeynmt/transformer_layers.py` Line `276-283`
         ```python
         if self._layer_norm_position == "pre":
                 x = self.layer_norm(x)
