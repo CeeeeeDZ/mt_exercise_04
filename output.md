@@ -5,14 +5,14 @@ Zishi Zhang
 
 ---
 
-## Task 1 LayerNorm in `JoeyNMT`
+## Task 1 LayerNorm in `JoeyNMT`  
 
 ---
 
-### Implementations
+### Implementations  
 
-- **LayerNorm**
-            Under `./joeynmt/transformer_layers.py` Line `143`
+- **LayerNorm**  
+        Under `./joeynmt/transformer_layers.py` Line `143`
         ```python
         self.layer_norm = nn.LayerNorm(input_size, eps=1e-6)
         ```
@@ -20,8 +20,8 @@ Zishi Zhang
         The layer normalization is implement by using method from torch called `LayerNorm`, eps is set to 1e-6 which will be add to the denominator for numerical stability. This is common throughout the whole program
 
 - **LayerNorm in Encoder**
-    - Multi-Head Attention
-            Under `./joeynmt/transformer_layers.py` Line `276-283`
+    - Multi-Head Attention  
+        Under `./joeynmt/transformer_layers.py` Line `276-283`  
         ```python
         if self._layer_norm_position == "pre":
                 x = self.layer_norm(x)
@@ -31,12 +31,12 @@ Zishi Zhang
 
             if self._layer_norm_position == "post":
                 x = self.layer_norm(x)
-        ```
-
+        ```  
+          
         If the `layer_norm_postion` is `pre`, the layernorm will be execute before self attention layer.
     
-    - Positionwise Feed Forward
-        Under `./joeynmt/transformer_layers.py` Line `158-164`
+    - Positionwise Feed Forward  
+        Under `./joeynmt/transformer_layers.py` Line `158-164`  
         ```python
         if self._layer_norm_position == "pre":
             x = self.layer_norm(x)
@@ -45,17 +45,17 @@ Zishi Zhang
 
         if self._layer_norm_position == "post":
             x = self.layer_norm(x)
-        ```
-
+        ```  
+          
         If the`layer_norm_postion` is `pre`, the layernorm will be execute before feed forward layer.
     
-    - LayerNorm of the whole encoder
-        Under `../joeynmt/encoder.py` Line `257-258`
+    - LayerNorm of the whole encoder  
+        Under `../joeynmt/encoder.py` Line `257-258`  
         ```python
         if self.layer_norm is not None:
             x = self.layer_norm(x)
-        ```
-
+        ```  
+          
         If the`layer_norm_postion` is `pre`, the layernorm will be execute after multi stacks of encoder.
 
 - **LayerNorm in Decoder**
